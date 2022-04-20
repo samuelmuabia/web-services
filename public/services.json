@@ -1,0 +1,44 @@
+[
+    {
+      "id": "124e13b9-2d54-4b2f-a74d-a77b362e6ebd",
+      "service": "Web Design",
+      "service-details": "I offer a creative and best quality web design service for your business",
+      "price": 20000,
+      "img":"./images/web-designing-by-designers-523-unscreen.gif"
+    },
+    {
+      "id": "124e13b9-2d54-4b2f-a74d-a77b372d6ebd",
+      "service": "Website Development",
+      "service-details": "I am here to help you to create your own web application and custom coded website.",
+      "price": 50000,
+      "img":"./images/Website-Development-All-Assets-unscreen.gif"
+    },
+    {
+      "id": "124e13b9-2d54-4b2f-a74d-a77b361d6ebd",
+      "service": "Debugging",
+      "service-details": "I help to identify the problem in your website and fix that",
+      "price": 10000,
+      "img":"./images/automatic-bug-detecting-and-fi-unscreen.gif"
+    },
+    {
+      "id": "124e13b9-2d54-4b2f-a74d-a77b362d6ebd",
+      "service": "Phoebe",
+      "service-details": "I've had this laptop for 5 months and I absolutely love it. Everything about it is decent. Sometimes I go back to my past orders in Amazon just to reflect on the time I put into researching and how happy I am with it. The only thing I notice is the battery life is only a few hours, so I probably wouldn't be productive if I was traveling, but I only use it at home so that doesn't affect me much.",
+      "price": 5,
+      "img":"./images/avatar-4.jpg"
+    },
+    {
+      "id": "124e13b9-2d54-4b2f-a74d-a77b362d6ebf",
+      "service": "Monica",
+      "service-details": "This has to be one of my best investments so far. I am satisfied with how this laptop performs because it seems to work good enough with most tasks you throw at it. It doesn’t freeze after having 10 tabs open with Spotify in the background. It runs GTA V and BeamNG on low settings at 45-60fps. It works smoothly with Photoshop, Blender and other workstations. Its just perfect for light gaming, browsing, editing pictures and more.",
+      "price": 4.25,
+      "img":"./images/avatar-5.jpg"
+    },
+    {
+      "id": "124e13b9-2d54-4b2f-a74d-a77b362d6esd",
+      "service": "Chandler Bing",
+      "service-details": "I bought this for my wife for general web surfing and video chatting and she loves it. And if you're concerned about Windows S mode, it is easily disabled with 1 click in Settings.",
+      "price": 5,
+      "img":"./images/avatar-6.jpg"
+    }
+]
