@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import useServices from '../../hook/useServices';
 import Service from '../Service/Service';
 
 
 const Home = () => {
-    const [services, setService] = useState([]);
-    useEffect(() => {
-        fetch('services.json')
-            .then(res => res.json())
-            .then(data => setService(data));
-    }, []);
+    const [services, setService] = useServices();
     return (
         <div className='container'>
             <div className=' row mx-auto my-5'>
