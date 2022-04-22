@@ -1,6 +1,6 @@
 import useServices from '../../hook/useServices';
 import useWorks from '../../hook/useWorks';
-import Footer from '../Footer/Footer';
+
 import Service from '../Service/Service';
 import Works from '../Works/Works';
 
@@ -32,7 +32,7 @@ const Home = () => {
 
                 </div>
             </section>
-            <Footer></Footer>
+
         </div>
     );
 };
