@@ -9,6 +9,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import NotFound from './components/NotFound/NotFound';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='*' element={<NotFound ></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
