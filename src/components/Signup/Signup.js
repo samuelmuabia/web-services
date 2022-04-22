@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 
@@ -13,20 +13,36 @@ const Signup = () => {
     const [cerrormsg, setCerrormsg] = useState('');
     const [psuccessmsg, setPsuccessmsg] = useState('');
     const [csuccessmsg, setCsuccessmsg] = useState('');
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-
-    };
+    const navigateLogin = () => {
+        navigate('/login');
+    }
+    const [user1] = useAuthState(auth);
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+      if (user || user1){
+        navigate(from,{ replace: true });
+    }
+      const passTest = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const email = event.target.email.value;
+        if ((passTest.test(password) && password===confirmPassword)) {
+            createUserWithEmailAndPassword(email,password);
+        }
+    };
+
     const checkPassStrength = (event) => {
         const pass = event.target.value;
-        if (/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/.test(pass)) {
+        if (passTest.test(pass)) {
             setPerrormsg("");
             setPsuccessmsg("Strong Password");
             setPassword (pass);
@@ -34,6 +50,7 @@ const Signup = () => {
         else {
             setPsuccessmsg("");
             setPerrormsg("Please provide a password of atleast 8 characters, one capital letter and one digits");
+            setPassword("");
         }
     }
     const passwordMatch =(event)=>{
@@ -46,12 +63,13 @@ const Signup = () => {
         else{
             setCsuccessmsg("");
             setCerrormsg("Password doesn't Match");
+            setConfirmPassword("");
         }
     }
     return (
 
         <div className='w-50 mx-auto'>
-            <h1 className='text-center my-5'>Login</h1>
+            <h1 className='text-center my-5'>Sign Up</h1>
             <Form onSubmit={handleSubmit} >
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -66,15 +84,13 @@ const Signup = () => {
                 </Form.Group>
                 <Form.Group onBlur={passwordMatch} className={"mb-3" + (cerrormsg ? "border-danger" : "") + (csuccessmsg ? "border-success" : "")} controlId="formConfirmBasicPassword">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type="password" name="cpass" placeholder="Confirm Password" />
+                    <Form.Control type="password" name="cpass" placeholder="Confirm Password"  required/>
                     {cerrormsg ? <p className='text-danger'>{cerrormsg}</p> : <p className='text-success'>{csuccessmsg}</p>}
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
                 <Button variant="primary" type="submit">Submit</Button>
-
             </Form>
+            <p>Already Have an Account? <Link to="/login" onClick={navigateLogin}>Login</Link> </p>
+
         </div>
     );
 };

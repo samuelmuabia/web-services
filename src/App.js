@@ -8,6 +8,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import NotFound from './components/NotFound/NotFound';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 
 
 function App() {
@@ -15,15 +16,20 @@ function App() {
     <div >
       <Header></Header>
       <Routes>
-       <Route path='/' element={<Home></Home>}></Route>
-       <Route path='/home' element={<Home></Home>}></Route>
-       <Route path='/checkout' element={<Checkout></Checkout>}></Route>
-       <Route path='/login' element={<Login></Login>}></Route>
-       <Route path='/signup' element={<Signup></Signup>}></Route>
-       <Route path='/blog' element={<Blog></Blog>}></Route>
-       <Route path='/about' element={<About></About>}></Route>
-       <Route path='*' element={<NotFound ></NotFound>}></Route>
-     </Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/home#services' element={<Home></Home>}></Route>
+
+        <Route path='/checkout' element={
+          <RequireAuth>
+            <Checkout></Checkout>
+          </RequireAuth>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/signup' element={<Signup></Signup>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
+        <Route path='*' element={<NotFound ></NotFound>}></Route>
+      </Routes>
     </div>
   );
 }
