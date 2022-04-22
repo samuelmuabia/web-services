@@ -36,7 +36,7 @@ const Login = () => {
             errorElement = <p className='text-danger'>{msg}</p>
         }
     }
-    const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
         auth
     );
     const resetHandle = async () => {
@@ -68,13 +68,13 @@ const Login = () => {
                 </Form.Group>
                 {errorElement}
                 <Button onClick={() => signInWithEmailAndPassword(email, password)} variant="primary" name="submit" type="submit"> {
-                    loading ? <Spinner animation="border" variant="light" /> : "Submit"
+                    loading ? <Spinner animation="border" variant="light" /> : "Login"
                 }</Button>
             </div>
             <p>Don't Have any Account? <Link to="/signup" onClick={navigateSignup} >Register Here</Link> </p>
             <p>Forget Password? <button className=' btn btn-link pe-auto' onClick={resetHandle} >
                 {
-                    loading ? <Spinner animation="border" variant="light" /> : "Reset Password"
+                    sending ? <Spinner animation="border" variant="light" /> : "Reset Password"
                 }</button> </p>
             <ToastContainer />
             <div className='d-flex align-items-center'>

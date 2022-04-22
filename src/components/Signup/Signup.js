@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 const Signup = () => {
@@ -24,8 +25,7 @@ const Signup = () => {
     const [
         createUserWithEmailAndPassword,
         user,
-        loading,
-        error,
+        loading
       ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
       if (user || user1){
         navigate(from,{ replace: true });
@@ -87,10 +87,12 @@ const Signup = () => {
                     <Form.Control type="password" name="cpass" placeholder="Confirm Password"  required/>
                     {cerrormsg ? <p className='text-danger'>{cerrormsg}</p> : <p className='text-success'>{csuccessmsg}</p>}
                 </Form.Group>
-                <Button variant="primary" type="submit">Submit</Button>
+                <Button variant="primary" type="submit"> {
+                    loading ? <Spinner animation="border" variant="light" /> : "Sign Up"
+                }</Button>
             </Form>
             <p>Already Have an Account? <Link to="/login" onClick={navigateLogin}>Login</Link> </p>
-
+            <SocialLogin></SocialLogin>
         </div>
     );
 };

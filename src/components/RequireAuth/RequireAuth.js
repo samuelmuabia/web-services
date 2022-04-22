@@ -8,10 +8,7 @@ import auth from '../../firebase.init';
 const RequireAuth = ({ children }) => {
     const [user, loading] = useAuthState(auth);
     const location = useLocation();
-    const [sendEmailVerification, sending, error] = useSendEmailVerification(auth);
-    if (loading) {
-        return  <div> Hello</div>;
-    }
+    const [sendEmailVerification] = useSendEmailVerification(auth);
 
     if (!user) {
         return <Navigate to="/login" state={{ from: location }} replace />;
@@ -30,7 +27,7 @@ const RequireAuth = ({ children }) => {
             >
                 Send Verification Email Again
             </button>
-            <ToastContainer>Email has been sent</ToastContainer>
+            <ToastContainer></ToastContainer>
         </div>
     }
 
