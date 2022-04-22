@@ -1,5 +1,5 @@
 # Web Solution
-Here you can get any soltion for your website. Here is the live [site](https://web-services-a6dd2.wep.app)
+Here you can get any soltion for your website. Here is the live [site](https://web-services-a6dd2.web.app/)
 
 What do we have in this site :
 * A home page  nav bar with login and signup option
