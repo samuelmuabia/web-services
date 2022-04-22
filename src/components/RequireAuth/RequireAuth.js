@@ -6,7 +6,7 @@ import auth from '../../firebase.init';
 
 
 const RequireAuth = ({ children }) => {
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const location = useLocation();
     const [sendEmailVerification] = useSendEmailVerification(auth);
 
@@ -19,7 +19,7 @@ const RequireAuth = ({ children }) => {
             <h3 className='text-danger'>Your Email is not verified!!</h3>
             <h5 className='text-success'> Please Verify your email address</h5>
             <button
-            className='btn btn-primary'
+                className='btn btn-primary'
                 onClick={async () => {
                     await sendEmailVerification();
                     toast('Sent email');

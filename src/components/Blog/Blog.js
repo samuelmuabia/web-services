@@ -24,7 +24,7 @@ const Blog = () => {
                     <li> Dynamic Links</li>
                     <li>Remote Config</li>
                 </ol>
-                </p>
+            </p>
         </div>
     );
 };

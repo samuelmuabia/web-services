@@ -7,7 +7,6 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 const Signup = () => {
-    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [perrormsg, setPerrormsg] = useState('');
@@ -26,17 +25,17 @@ const Signup = () => {
         createUserWithEmailAndPassword,
         user,
         loading
-      ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
-      if (user || user1){
-        navigate(from,{ replace: true });
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    if (user || user1) {
+        navigate(from, { replace: true });
     }
-      const passTest = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
+    const passTest = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const email = event.target.email.value;
-        if ((passTest.test(password) && password===confirmPassword)) {
-            createUserWithEmailAndPassword(email,password);
+        if ((passTest.test(password) && password === confirmPassword)) {
+            createUserWithEmailAndPassword(email, password);
         }
     };
 
@@ -45,7 +44,7 @@ const Signup = () => {
         if (passTest.test(pass)) {
             setPerrormsg("");
             setPsuccessmsg("Strong Password");
-            setPassword (pass);
+            setPassword(pass);
         }
         else {
             setPsuccessmsg("");
@@ -53,14 +52,14 @@ const Signup = () => {
             setPassword("");
         }
     }
-    const passwordMatch =(event)=>{
+    const passwordMatch = (event) => {
         const cpass = event.target.value;
-        if(password===cpass){
+        if (password === cpass) {
             setCerrormsg("");
             setCsuccessmsg("Password Matched");
             setConfirmPassword(cpass)
         }
-        else{
+        else {
             setCsuccessmsg("");
             setCerrormsg("Password doesn't Match");
             setConfirmPassword("");
@@ -79,12 +78,12 @@ const Signup = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control onBlur={checkPassStrength} className={ (perrormsg ? "border-danger" : "") + (psuccessmsg ? "border-success" : "")}  type="password" name="pass" placeholder="Password" required />
+                    <Form.Control onBlur={checkPassStrength} className={(perrormsg ? "border-danger" : "") + (psuccessmsg ? "border-success" : "")} type="password" name="pass" placeholder="Password" required />
                     {perrormsg ? <p className='text-danger'>{perrormsg}</p> : <p className='text-success'>{psuccessmsg}</p>}
                 </Form.Group>
                 <Form.Group onBlur={passwordMatch} className={"mb-3" + (cerrormsg ? "border-danger" : "") + (csuccessmsg ? "border-success" : "")} controlId="formConfirmBasicPassword">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type="password" name="cpass" placeholder="Confirm Password"  required/>
+                    <Form.Control type="password" name="cpass" placeholder="Confirm Password" required />
                     {cerrormsg ? <p className='text-danger'>{cerrormsg}</p> : <p className='text-success'>{csuccessmsg}</p>}
                 </Form.Group>
                 <Button variant="primary" type="submit"> {

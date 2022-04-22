@@ -42,14 +42,14 @@ const Header = () => {
                                 user ?
                                     <button className='btn btn-primary' onClick={handleSignOut}>sign out</button>
                                     :
-                                   <LinkContainer to="/login">
-                                    <Nav.Link >Login</Nav.Link>
-                                </LinkContainer>
-                                }
+                                    <LinkContainer to="/login">
+                                        <Nav.Link >Login</Nav.Link>
+                                    </LinkContainer>
+                            }
                             {
-                                user ? "": <LinkContainer to="/signup">
-                                <Nav.Link >Sign Up</Nav.Link>
-                            </LinkContainer>
+                                user ? "" : <LinkContainer to="/signup">
+                                    <Nav.Link >Sign Up</Nav.Link>
+                                </LinkContainer>
                             }
 
                         </Nav>

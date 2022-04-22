@@ -1,5 +1,5 @@
 # Web Solution
-Here you can get any soltion for your website. Here is the live [site](https://github.com/facebook/create-react-app)
+Here you can get any soltion for your website. Here is the live [site](https://web-services-a6dd2.wep.app)
 
 What do we have in this site :
 * A home page  nav bar with login and signup option
@@ -9,4 +9,4 @@ What do we have in this site :
 * A About page with some details about me
 * A protected checkout page
 
-Building this website , i have used : React js, Jsx , React Bootstrap, Bootstrap, firbase, react router dom, react firebase hooks.
+Building this website , i have used : React js, Jsx , React Bootstrap, Bootstrap, firbase, react router dom, react firebase hooks adn react toastify.
